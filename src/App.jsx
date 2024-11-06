@@ -1,8 +1,9 @@
 import { useState } from "react";
-import Todo from "./Movie";
+// import Movie from "./Movie";
 import Card from "./component/card";
 import { Provider } from "react-redux";
 import { store } from "./Store/store";
+import { MovieGrid } from "./features/MovieGrid";
 
 function App() {
   // const [movieData, setmovieData] = useState([]);
@@ -27,8 +28,7 @@ function App() {
   return (
     <Provider store={store}>
     <div>
-      <Todo  />
-      <Card />
+      <MovieGrid  />
     </div>
     </Provider>
   );
