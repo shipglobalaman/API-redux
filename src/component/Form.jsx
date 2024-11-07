@@ -5,17 +5,20 @@ import { addMovie } from "../features/movieSlice";
 const Form = () => {
   const [Title, setTitle] = useState("");
   const [URL, setURL] = useState("");
+  const [loading , setLoading] =useState(false);
 
   const dispatch = useDispatch();
 
   const handleAddMovie = (e) => {
+    setLoading(true);
     e.preventDefault();
-
-    if (Title && URL) {
-      dispatch(addMovie({ title: Title, url: URL }));
-      setTitle("");
-      setURL("");
-    }
+    setTimeout(()=>{if (Title && URL) {
+        dispatch(addMovie({ title: Title, url: URL }));
+        setTitle("");
+        setURL("");
+        setLoading(false);
+      }},2000);
+    
   };
   return (
     <div>
@@ -40,7 +43,7 @@ const Form = () => {
           type="submit"
           className="text-white border-white border-[1px] rounded-md p-1"
         >
-          Submit
+         {loading?"Submiting...":"Submit"} 
         </button>
       </form>
     </div>
